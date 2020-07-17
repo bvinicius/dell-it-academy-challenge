@@ -9,11 +9,11 @@ const statements = lines.filter(line => !isQuestion(line))
 const questions = lines.filter(line => isQuestion(line))
 
 statements.forEach(statement => {
-    if (isNotation(statement)) {
+    if (isNotation(statement)) 
         learnNotation(statement)
-    } else if (isPriceDefinition(statement)) {
+
+    else if (isPriceDefinition(statement)) 
         learnPrice(statement)
-    }
 })
 
 questions.forEach(question => answer(question))
@@ -44,7 +44,7 @@ function learnPrice(statement) {
 
     const metal = firstwords[firstwords.length - 1]
     const total = lastwords[0]
-    const romanQuant = firstwords.slice(0, firstwords.length - 1).map(e => notations[e]).join('')
+    const romanQuant = firstwords.slice(0, -1).map(e => notations[e]).join('')
     const quant = romanToDecimal(romanQuant)
 
     const unitPrice = total / quant
@@ -54,6 +54,29 @@ function learnPrice(statement) {
 
 function answer(question) {
     console.log(question)
+    if (question.includes('vale')) {
+        const names = question
+            .split(' vale ')[1]
+            .split(' ')
+            .slice(0, -1)
+        
+        const value = names
+            .map(e => notations[e])
+            .join('')
+
+        console.log(`${names.join(' ')} vale ${romanToDecimal(value)}\n`)
+    } else if (question.includes('créditos')) {
+        const info = question.split(' são ')[1].split(' ')
+        info.pop() //removes '?'
+        
+        const metal = info.pop()
+        const romans = info.map(e => notations[e]).join('')
+        const quant = romanToDecimal(romans)
+
+        const total = catalog[metal] * quant
+
+        console.log(`${info.join(' ')} ${metal} vale ${total} créditos\n`)
+    }
 }
 
 function romanToDecimal(value) {
