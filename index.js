@@ -30,6 +30,10 @@ function isPriceDefinition(text) {
     return text.includes('valem')
 }
 
+function isValid(word) {
+    return Object.keys(catalog).includes(word) || Object.keys(notations).includes(word)
+}
+
 function learnNotation(statement) {
     const words = statement.split(' ')
     const notation = words[0]
@@ -39,14 +43,16 @@ function learnNotation(statement) {
 }
 
 function learnPrice(statement) {
-    const firstwords = statement.split(' valem ')[0].split(' ')
-    const lastwords = statement.split(' valem ')[1].split(' ')
+    const halfs = statement.split(' valem ')
+
+    const firstwords = halfs[0].split(' ')
+    const lastwords = halfs[1].split(' ')
 
     const metal = firstwords[firstwords.length - 1]
     const total = lastwords[0]
     const romanQuant = firstwords.slice(0, -1).map(e => notations[e]).join('')
+    
     const quant = romanToDecimal(romanQuant)
-
     const unitPrice = total / quant
 
     Object.assign(catalog, {[metal]: unitPrice})
@@ -55,20 +61,34 @@ function learnPrice(statement) {
 function answer(question) {
     console.log(question)
     if (question.includes('vale')) {
-        const names = question
+        const quant = question
             .split(' vale ')[1]
             .split(' ')
             .slice(0, -1)
-        
-        const value = names
+
+        const invalid = quant.filter(e => !isValid(e))
+        if (invalid.length) {
+            console.log('Nem ideia do que isto significa!')
+            return 
+        }
+    
+        const value = quant
             .map(e => notations[e])
             .join('')
 
-        console.log(`${names.join(' ')} vale ${romanToDecimal(value)}\n`)
+        console.log(`${quant.join(' ')} vale ${romanToDecimal(value)}\n`)
     } else if (question.includes('créditos')) {
-        const info = question.split(' são ')[1].split(' ')
-        info.pop() //removes '?'
-        
+        const info = question
+            .split(' são ')[1]
+            .split(' ')
+            .slice(0, -1)
+            
+        const invalid = info.filter(e => !isValid(e))
+        if (invalid.length) {
+            console.log('Nem ideia do que isto significa!')
+            return 
+        }
+    
         const metal = info.pop()
         const romans = info.map(e => notations[e]).join('')
         const quant = romanToDecimal(romans)
