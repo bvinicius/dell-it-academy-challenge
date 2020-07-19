@@ -1,6 +1,6 @@
 # Guia do Vendedor Espacial
 
-Descrição
+## Descrição
 Você decidiu abandonar o planeta Terra de vez, após o último colapso ecológico do planeta. Com os recursos que você possui, você pode comprar uma nave espacial, deixar a Terra e voar por toda a galáxia para vender metais de vários tipos. Comprar e vender por toda a galáxia exige que você converta números e unidades, logo você decidiu escrever um programa para ajudá-lo. Os números usados nas transações intergalácticas seguem convenção similar à dos numerais romanos, e devem ser traduzidos para que as transações possam se realizar. Sobre os numerais romanos Numerais romanos são baseados em sete símbolos:
 
 | Símbolo  | Valor |
