@@ -47,3 +47,18 @@ snob krok Gold custa 57800 créditos
 snob krok Iron custa 782 créditos
 Nem ideia do que isto significa!
 ```
+
+# Executando o Código
+O código pode ser executado de duas maneiras:
+#### Clonando o Repositório
+Para executar o código, abra o terminal e digite os comandos abaixo: 
+``` 
+git clone https://github.com/bvinicius/dell-it-academy-challenge
+cd dell-it-academy-challenge/
+node index.js
+```
+#### Extraindo o arquivo .zip
+Extraia os arquivos em qualquer pasta. Depois, na pasta onde os arquivos foram extraídos, abra o terminal e digite o comando abaixo:
+```
+node index.js
+```
