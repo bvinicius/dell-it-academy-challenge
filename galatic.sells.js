@@ -1,4 +1,4 @@
-const Roman = require('./Roman');
+const Roman = require('./roman');
 
 class GalaticSells {
     constructor(text) {
@@ -90,7 +90,6 @@ class GalaticSells {
      * @param {string} question 
      */
     answer(question) {
-        console.log(question)
         if (question.includes('vale')) {
             const quant = question
                 .split(' vale ')[1]
@@ -107,7 +106,7 @@ class GalaticSells {
                 .map(e => this.notations[e])
                 .join('')
     
-            console.log(`${quant.join(' ')} vale ${new Roman().toDecimal(value)}\n`)
+            console.log(`${quant.join(' ')} vale ${new Roman().toDecimal(value)}`)
         } else if (question.includes('créditos')) {
             const info = question
                 .split(' são ')[1]

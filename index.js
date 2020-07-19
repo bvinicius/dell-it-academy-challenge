@@ -1,5 +1,5 @@
 const fs = require('fs');
-const GalaticSells = require('./GalaticSells')
+const GalaticSells = require('./galatic.sells')
 
 const input = fs.readFileSync('input.txt').toString()
 
