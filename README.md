@@ -48,7 +48,7 @@ snob krok Iron custa 782 créditos
 Nem ideia do que isto significa!
 ```
 
-# Executando o Código
+## Executando o Código
 O código pode ser executado de duas maneiras:
 #### Clonando o Repositório
 Para executar o código, abra o terminal e digite os comandos abaixo: 
