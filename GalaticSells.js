@@ -21,23 +21,42 @@ class GalaticSells {
         this.questions.forEach(question => this.answer(question))
     }
 
-
+    /**
+     * Checks if `text` represents information about notations. 
+     * @param {string} text The text to be analyzed.
+     */
     isNotation(text) {
         return text.includes('representa')
     }
     
+    /**
+     * Checks if `text` represents a question.
+     * @param {string} text The text to be analyzed.
+     */
     isQuestion(text) {
         return text.includes('?')
     }
     
+    /**
+     * Checks if `text` represents information about metal prices.
+     * @param {string} text 
+     */
     isPriceDefinition(text) {
         return text.includes('valem')
     }
     
+    /**
+     * Checks if `word` is a valid catalog item or a valid interspacial notation
+     * @param {string} word 
+     */
     isValid(word) {
         return Object.keys(this.catalog).includes(word) || Object.keys(this.notations).includes(word)
     }
 
+    /**
+     * Processes a `statement` and stores the interspacial term and its value, in roman notation.
+     * @param {string} statement 
+     */
     learnNotation(statement) {
         const words = statement.split(' ')
         const notation = words[0]
@@ -46,6 +65,10 @@ class GalaticSells {
         Object.assign(this.notations, {[notation]: value}) 
     }
     
+    /**
+     * Processes a `statement` and stores the metal name and its unit price.
+     * @param {string} statement 
+     */
     learnPrice(statement) {
         const halfs = statement.split(' valem ')
     
@@ -62,6 +85,10 @@ class GalaticSells {
         Object.assign(this.catalog, {[metal]: unitPrice})
     }
 
+    /**
+     * Processes a `question`, giving its appropriate answer.
+     * @param {string} question 
+     */
     answer(question) {
         console.log(question)
         if (question.includes('vale')) {

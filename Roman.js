@@ -1,5 +1,9 @@
 class Roman {
-    
+
+    /**
+     * Given a `value` in roman notation, this method returns its value in decimal notation.
+     * @param {string} value 
+     */
     toDecimal(value) {
         const values = {
             'I': 1,
